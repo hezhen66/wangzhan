@@ -1,75 +1,86 @@
 <template>
   <div class="relative">
-    <NavBar :activeSection="activeSection" />
+    <!-- 始终使用同一个 NavBar -->
+    <NavBar
+      :activeSection="activeSection"
+      :onMessagePage="showMessage"
+      @goMessage="openMessage"
+      @goMain="closeMessage"
+    />
 
-    <section id="hero">
-      <HeroBanner />
-    </section>
+    <!-- 单页滚动 — v-show 保活，不销毁 DOM -->
+    <div v-show="!showMessage">
+      <section id="hero">
+        <HeroBanner />
+      </section>
 
-    <section id="brand">
-      <BrandIntro />
-    </section>
+      <section id="products">
+        <ProductShowcase />
+      </section>
 
-    <section id="advantages">
-      <FranchiseAdvantages />
-    </section>
+      <section id="truck">
+        <MobileTruck />
+      </section>
 
-    <section id="truck">
-      <MobileTruck />
-    </section>
+      <section id="advantages">
+        <FranchiseAdvantages />
+      </section>
 
-    <section id="products">
-      <ProductShowcase />
-    </section>
+      <section id="process">
+        <FranchiseProcess />
+      </section>
 
-    <section id="nutrition">
-      <NutritionValue />
-    </section>
+      <section id="contact">
+        <ContactUs @goMessage="openMessage" />
+      </section>
 
-    <section id="process">
-      <FranchiseProcess />
-    </section>
+      <Footer @goMessage="openMessage" />
+    </div>
 
-    <section id="contact">
-      <ContactUs />
-    </section>
-
-    <Footer />
+    <!-- 留言页 — v-show 保活 -->
+    <div v-show="showMessage">
+      <MessagePage />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import NavBar from './components/NavBar.vue'
 import HeroBanner from './components/HeroBanner.vue'
-import BrandIntro from './components/BrandIntro.vue'
-import FranchiseAdvantages from './components/FranchiseAdvantages.vue'
-import MobileTruck from './components/MobileTruck.vue'
 import ProductShowcase from './components/ProductShowcase.vue'
-import NutritionValue from './components/NutritionValue.vue'
+import MobileTruck from './components/MobileTruck.vue'
+import FranchiseAdvantages from './components/FranchiseAdvantages.vue'
 import FranchiseProcess from './components/FranchiseProcess.vue'
 import ContactUs from './components/ContactUs.vue'
+import MessagePage from './components/MessagePage.vue'
 import Footer from './components/Footer.vue'
 
+const showMessage = ref(false)
 const activeSection = ref('hero')
-const sections = ['hero', 'brand', 'advantages', 'truck', 'products', 'nutrition', 'process', 'contact']
+const sections = ['hero', 'products', 'truck', 'advantages', 'process', 'contact']
 
 let observer = null
 
 onMounted(() => {
+  const navH = 64
   observer = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-
-      if (visible.length > 0) {
-        activeSection.value = visible[0].target.id
-      }
+    () => {
+      let current = 'hero'
+      let best = Infinity
+      sections.forEach(id => {
+        const el = document.getElementById(id)
+        if (!el) return
+        const top = el.getBoundingClientRect().top
+        if (top < navH + 100 && navH - top < best) {
+          best = navH - top
+          current = id
+        }
+      })
+      activeSection.value = current
     },
-    { threshold: [0.25, 0.5], rootMargin: '-80px 0px 0px 0px' }
+    { threshold: [0, 0.25, 0.5, 0.75, 1] }
   )
-
   sections.forEach(id => {
     const el = document.getElementById(id)
     if (el) observer.observe(el)
@@ -79,4 +90,22 @@ onMounted(() => {
 onUnmounted(() => {
   if (observer) observer.disconnect()
 })
+
+function openMessage() {
+  showMessage.value = true
+  window.scrollTo({ top: 0, behavior: 'instant' })
+}
+
+function closeMessage(section) {
+  showMessage.value = false
+  nextTick(() => {
+    const el = document.getElementById(section)
+    if (el) {
+      el.scrollIntoView({ behavior: 'instant' })
+      activeSection.value = section
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  })
+}
 </script>

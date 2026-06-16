@@ -7,8 +7,16 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply font-body text-brand-dark antialiased;
+    @apply font-body antialiased;
+    color: #2d2d2d;
+    background-color: transparent;
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
   }
+  /* 统一标题深灰 */
+  h1, h2, h3, h4, h5, h6 { color: #2d2d2d; }
+  /* 统一段落灰 */
+  p { color: #4a4a4a; }
 }
 
 @layer components {
@@ -24,36 +32,72 @@
            text-center cursor-pointer select-none;
   }
   .section-title {
-    @apply text-3xl md:text-4xl font-display font-bold text-center text-brand-dark mb-4;
+    @apply text-3xl md:text-4xl font-display font-bold text-center mb-4;
+    color: #2d2d2d;
   }
   .section-subtitle {
-    @apply text-brand-gray text-center mb-12 max-w-2xl mx-auto;
+    @apply text-center mb-12 max-w-2xl mx-auto text-sm md:text-base;
+    color: #888888;
   }
+  /* 全局卡片 — 国风微圆角 */
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+    @apply transition-all duration-300 hover:-translate-y-1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+  }
+  .card-hover:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  }
+  /* 暖色卡 */
+  .warm-card {
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    @apply bg-brand-silk border transition-all duration-300;
+    border-color: #8c502b20;
+  }
+  .warm-card:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  }
+  /* 输入框统一样式 */
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  textarea {
+    border-radius: 4px;
   }
 }
 
-/* 滚动渐入动画 */
-.fade-up-enter {
-  opacity: 0;
-  transform: translateY(40px);
-}
-.fade-up-enter-active {
-  transition: all 0.6s ease-out;
+/* 手机端间距压缩 */
+@media screen and (max-width: 768px) {
+  section > div {
+    padding-top: 35px !important;
+    padding-bottom: 35px !important;
+  }
+  .py-12, .py-16, .py-20, .py-28 {
+    padding-top: 35px !important;
+    padding-bottom: 35px !important;
+  }
 }
 
-/* 滚动条美化 */
-::-webkit-scrollbar {
-  width: 8px;
+/* 全局卡片圆角 — 国风微圆 */
+.rounded-2xl { border-radius: 4px; }
+.rounded-xl  { border-radius: 4px; }
+.rounded-lg  { border-radius: 4px; }
+.rounded-full { border-radius: 9999px; }
+
+/* 全局阴影 — 熟栗色暖调 */
+.shadow-lg {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.shadow-xl {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
-::-webkit-scrollbar-thumb {
-  background: #C41E3A;
-  border-radius: 4px;
+.shadow-2xl {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #8B1A2B;
-}
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #F5EDDF; }
+::-webkit-scrollbar-thumb { background: #C41E3A; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #8B1A2B; }
