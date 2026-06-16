@@ -59,12 +59,12 @@
 
   <!-- 信任衔接条 -->
   <div class="bg-brand-wine text-white/90">
-    <div class="max-w-4xl mx-auto px-1 py-1 sm:py-3 flex flex-row items-center justify-center gap-1.5 sm:gap-10 text-[10px] sm:text-sm font-medium">
-      <span class="flex items-center gap-1 whitespace-nowrap"><span class="text-sm">⏱️</span> 1-2人轻松操盘</span>
-      <span class="text-white/15 text-[10px]">|</span>
-      <span class="flex items-center gap-1 whitespace-nowrap"><span class="text-sm">💰</span> 低成本轻资产启动</span>
-      <span class="text-white/15 text-[10px]">|</span>
-      <span class="flex items-center gap-1 whitespace-nowrap"><span class="text-sm">🎓</span> 总部核心技术无保留传授</span>
+    <div class="max-w-4xl mx-auto px-1 py-0.5 sm:py-3 flex flex-row items-center justify-center gap-1 sm:gap-10 text-[10px] sm:text-sm font-medium">
+      <span class="flex items-center gap-0.5 whitespace-nowrap"><span class="text-xs">⏱️</span> 1-2人操盘</span>
+      <span class="text-white/15 text-[9px]">|</span>
+      <span class="flex items-center gap-0.5 whitespace-nowrap"><span class="text-xs">💰</span> 轻资产启动</span>
+      <span class="text-white/15 text-[9px]">|</span>
+      <span class="flex items-center gap-0.5 whitespace-nowrap"><span class="text-xs">🎓</span> 核心技术传授</span>
     </div>
   </div>
 </template>

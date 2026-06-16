@@ -63,6 +63,7 @@ const sections = ['hero', 'products', 'truck', 'advantages', 'process', 'contact
 let observer = null
 
 onMounted(() => {
+  window.scrollTo({ top: 0, behavior: 'instant' })
   const navH = 64
   observer = new IntersectionObserver(
     () => {
