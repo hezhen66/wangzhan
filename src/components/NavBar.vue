@@ -3,10 +3,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-14 md:h-16">
         <!-- Logo — 点击回首页 -->
-        <a v-if="!onMessagePage" href="#hero" class="flex items-center space-x-2 flex-shrink-0">
+        <a v-if="!onMessagePage" href="#hero" class="flex items-center flex-shrink-0">
           <span class="text-lg md:text-xl font-display font-bold tracking-wide" :class="isScrolled ? 'text-brand-red' : 'text-white'">云声健</span>
         </a>
-        <button v-else @click="$emit('goMain', 'hero')" class="flex items-center space-x-2 flex-shrink-0">
+        <button v-else @click="$emit('goMain', 'hero')" class="flex items-center flex-shrink-0">
           <span class="text-lg md:text-xl font-display font-bold tracking-wide" :class="isScrolled ? 'text-brand-red' : 'text-white'">云声健</span>
         </button>
 
