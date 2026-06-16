@@ -17,7 +17,7 @@
                class="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-wide mb-2 hover:text-brand-gold transition-colors duration-300">
               185 6002 6427
             </a>
-            <p class="text-white/40 text-sm mb-6">胡先生 · 微信同号</p>
+            <p class="text-white/40 text-sm mb-6">胡先生</p>
 
             <p class="text-white/60 text-sm leading-relaxed mb-8 max-w-xs">
               如果您对我们的品牌与产品感兴趣，欢迎直接致电或添加微信咨询。我们将为您提供详细的加盟资料与专业解答。

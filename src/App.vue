@@ -63,7 +63,9 @@ const sections = ['hero', 'products', 'truck', 'advantages', 'process', 'contact
 let observer = null
 
 onMounted(() => {
-  window.scrollTo({ top: 0, behavior: 'instant' })
+  history.scrollRestoration = 'manual'
+  setTimeout(() => window.scrollTo(0, 0), 0)
+  setTimeout(() => window.scrollTo(0, 0), 100)
   const navH = 64
   observer = new IntersectionObserver(
     () => {
