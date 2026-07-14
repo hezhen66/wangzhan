@@ -75,8 +75,7 @@ const products = [
     emoji: '🥩', bg1: '#c41e3a', bg2: '#8b1a2b', bg3: '#5c1018',
     tags: ['核心爆款', '高蛋白', '逢出必抢'],
     scene: '佐餐下酒 · 家庭聚餐必备硬菜',
-    img: '/wangzhan/images/product-jiangniurou.jpg',
-    imgPath: 'assets/wangzhan/images/product-jiangniurou.jpg',
+    img: '/images/product-jiangniurou.jpg',
   },
   {
     name: '牛肚',
@@ -84,8 +83,7 @@ const products = [
     emoji: '🍖', bg1: '#c9a96e', bg2: '#8b6914', bg3: '#5c440d',
     tags: ['高复购王牌', '爽脆弹牙', '冷拌经典'],
     scene: '凉拌即食 · 佐酒下饭两相宜',
-    img: '/wangzhan/images/product-niudu.jpg',
-    imgPath: 'assets/wangzhan/images/product-niudu.jpg',
+    img: '/images/product-niudu.jpg',
   },
   {
     name: '牛腱子',
@@ -93,8 +91,7 @@ const products = [
     emoji: '🥓', bg1: '#b5651d', bg2: '#8b4513', bg3: '#5c2d0a',
     tags: ['宴客首推', '纹理精美', '低脂高蛋白'],
     scene: '切片摆盘 · 宴客赠礼体面之选',
-    img: '/wangzhan/images/product-niujianzi.jpg',
-    imgPath: 'assets/wangzhan/images/product-niujianzi.jpg',
+    img: '/images/product-niujianzi.jpg',
   },
   {
     name: '牛蹄筋',
@@ -102,8 +99,7 @@ const products = [
     emoji: '🍗', bg1: '#d4a574', bg2: '#a0522d', bg3: '#6b3410',
     tags: ['招牌人气', '胶原蛋白', '滋补养颜'],
     scene: '老幼皆宜 · 每日现卤限量供应',
-    img: '/wangzhan/images/product-niutijin.png',
-    imgPath: 'assets/wangzhan/images/product-niutijin.jpg',
+    img: '/images/product-niutijin.png',
   },
   {
     name: '牛百叶',
@@ -111,8 +107,7 @@ const products = [
     emoji: '🍲', bg1: '#8b6914', bg2: '#6b4c12', bg3: '#4a340d',
     tags: ['百搭爆款', '爽脆化渣', '一材多吃'],
     scene: '火锅标配 · 凉拌热炒样样通',
-    img: '/wangzhan/images/product-niubaiye.jpg',
-    imgPath: 'assets/wangzhan/images/product-niubaiye.jpg',
+    img: '/images/product-niubaiye.jpg',
   },
 ]
 

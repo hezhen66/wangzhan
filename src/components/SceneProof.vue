@@ -120,16 +120,16 @@ import { ref } from 'vue'
 
 const videoRef = ref(null)
 const videoError = ref(false)
-const videoSrc = '/wangzhan/videos/scene-crowd.mp4'
+const videoSrc = '/videos/scene-crowd.mp4'
 const lightboxOpen = ref(false)
 const currentImage = ref(0)
 
 // 场景图片 — 素材放到 public/images/scene/ 下即可生效
 const sceneImages = ref([
-  { src: '/wangzhan/images/scene/scene-1.jpg', title: '出摊即排队', desc: '每日出摊客流不断' },
-  { src: '/wangzhan/images/scene/scene-2.jpg', title: '人气火爆', desc: '街坊邻里口碑相传' },
-  { src: '/wangzhan/images/scene/scene-3.jpg', title: '回头客不断', desc: '品质好自然客源稳定' },
-  { src: '/wangzhan/images/scene/scene-4.jpg', title: '产品丰富多样', desc: '酱牛肉等产品现场展示' },
+  { src: '/images/scene/scene-1.jpg', title: '出摊即排队', desc: '每日出摊客流不断' },
+  { src: '/images/scene/scene-2.jpg', title: '人气火爆', desc: '街坊邻里口碑相传' },
+  { src: '/images/scene/scene-3.jpg', title: '回头客不断', desc: '品质好自然客源稳定' },
+  { src: '/images/scene/scene-4.jpg', title: '产品丰富多样', desc: '酱牛肉等产品现场展示' },
 ])
 
 function onVideoError() {

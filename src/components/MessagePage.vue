@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-[80vh] py-12 md:py-16 bg-gradient-to-b from-brand-silk to-white flex items-center">
+  <div class="min-h-[80vh] py-12 md:py-16 bg-gradient-to-b from-brand-silk to-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 w-full">
       <div class="text-center mb-8">
         <h2 class="text-2xl md:text-3xl font-display font-bold text-brand-dark mb-2">在线留言咨询</h2>
@@ -94,9 +94,7 @@ async function handleSubmit() {
     window.open(`mailto:2640015837@qq.com?subject=${encodeURIComponent(subject)}&body=${body}`, '_blank')
     resultOk.value = true
     resultMsg.value = '正在打开邮箱，请发送邮件完成提交'
-    if (data.success) {
-      form.name = ''; form.phone = ''; form.city = ''; form.message = ''
-    }
+    form.name = ''; form.phone = ''; form.city = ''; form.message = ''
   } catch (err) {
     resultOk.value = false
     resultMsg.value = '提交失败，请稍后重试'

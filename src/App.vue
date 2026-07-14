@@ -76,6 +76,14 @@ onMounted(() => {
   history.scrollRestoration = 'manual'
   setTimeout(() => window.scrollTo(0, 0), 0)
   setTimeout(() => window.scrollTo(0, 0), 100)
+
+  // 浏览器返回按钮：关闭留言页
+  window.addEventListener('popstate', () => {
+    if (showMessage.value) {
+      showMessage.value = false
+    }
+  })
+
   const navH = 64
   observer = new IntersectionObserver(
     () => {
@@ -106,11 +114,13 @@ onUnmounted(() => {
 
 function openMessage() {
   showMessage.value = true
+  history.pushState({ page: 'message' }, '', '#message')
   window.scrollTo({ top: 0, behavior: 'instant' })
 }
 
 function closeMessage(section) {
   showMessage.value = false
+  if (history.state?.page === 'message') history.back()
   nextTick(() => {
     const el = document.getElementById(section)
     if (el) {
