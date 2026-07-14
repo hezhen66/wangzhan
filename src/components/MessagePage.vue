@@ -11,7 +11,9 @@
       <div class="grid md:grid-cols-2 gap-6">
         <!-- 左侧：品牌文案 -->
         <div class="bg-gradient-to-br from-brand-cream-dark to-brand-silk rounded-2xl p-6 md:p-8 flex flex-col justify-center border border-brand-gold/10">
-          <h3 class="text-lg md:text-xl font-display font-bold text-brand-dark mb-3 leading-snug">云声健五香牛肉坊<br/>全国招商加盟</h3>
+          <h3 class="text-lg md:text-xl font-display font-bold text-brand-dark mb-1 leading-snug">云声健五香牛肉坊</h3>
+          <p class="font-display font-bold text-sm text-brand-dark tracking-[0.3em] mb-2">只做真牛肉</p>
+          <p class="text-brand-dark font-bold text-sm">全国招商加盟</p>
           <p class="text-brand-gray text-sm leading-relaxed mb-4">如果您对我们的品牌与产品感兴趣，欢迎在线留言。招商经理将在第一时间与您取得联系，为您提供详细加盟资料与政策解读。</p>
           <div class="space-y-2 text-sm text-brand-dark">
             <div class="flex items-start gap-2"><span class="text-brand-red font-bold mt-0.5">✓</span> 总部技术全托管，零基础无忧起步</div>
@@ -87,14 +89,11 @@ async function handleSubmit() {
   sending.value = true
   resultMsg.value = ''
   try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...form }),
-    })
-    const data = await res.json()
-    resultOk.value = data.success
-    resultMsg.value = data.message
+    const subject = `云声健加盟咨询 - ${form.name}`
+    const body = `姓名：${form.name}%0D%0A电话：${form.phone}%0D%0A城市：${form.city || '未填写'}%0D%0A留言：${form.message || '无'}`
+    window.open(`mailto:2640015837@qq.com?subject=${encodeURIComponent(subject)}&body=${body}`, '_blank')
+    resultOk.value = true
+    resultMsg.value = '正在打开邮箱，请发送邮件完成提交'
     if (data.success) {
       form.name = ''; form.phone = ''; form.city = ''; form.message = ''
     }

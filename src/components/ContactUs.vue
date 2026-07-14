@@ -17,7 +17,12 @@
                class="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-wide mb-2 hover:text-brand-gold transition-colors duration-300">
               185 6002 6427
             </a>
-            <p class="text-white/40 text-sm mb-6">胡先生</p>
+            <p class="text-white/40 text-sm mb-1">胡先生</p>
+            <a href="tel:0531-82052955"
+               class="text-2xl md:text-3xl font-black text-white tracking-wide mb-1 hover:text-brand-gold transition-colors duration-300">
+              0531-82052955
+            </a>
+            <p class="text-white/30 text-xs mb-6">加盟热线</p>
 
             <p class="text-white/60 text-sm leading-relaxed mb-8 max-w-xs">
               如果您对我们的品牌与产品感兴趣，欢迎直接致电或添加微信咨询。我们将为您提供详细的加盟资料与专业解答。

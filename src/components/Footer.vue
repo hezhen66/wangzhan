@@ -3,8 +3,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-3 gap-8 mb-8">
         <div>
-          <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-wide">云声健</h3>
-          <p class="text-sm leading-relaxed text-white/40">祖传秘方，纯真酱牛肉的坚守者。<br/>云声健五香牛肉坊全国招商加盟火热进行中。</p>
+          <h3 class="text-2xl font-display font-bold text-white mb-2 tracking-wide">云声健五香牛肉坊</h3>
+          <p class="font-display font-bold text-sm text-white tracking-[0.3em] mb-4">只做真牛肉</p>
+          <p class="text-sm leading-relaxed text-white/40">独家秘方，纯真酱牛肉的坚守者。<br/>云声健五香牛肉坊全国招商加盟火热进行中。</p>
         </div>
         <div>
           <h4 class="text-white font-bold mb-4">快速导航</h4>
@@ -20,7 +21,8 @@
         <div>
           <h4 class="text-white font-bold mb-4">联系方式</h4>
           <div class="space-y-2 text-sm text-white/40">
-            <p>加盟热线：18560026427</p>
+            <p>加盟热线：0531-82052955</p>
+            <p>咨询电话：18560026427</p>
             <p>电子邮箱：2640015837@qq.com</p>
           </div>
         </div>

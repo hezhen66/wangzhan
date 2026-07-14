@@ -4,16 +4,21 @@
       <div class="flex items-center justify-between h-14 md:h-16">
         <!-- Logo — 点击回首页 -->
         <a v-if="!onMessagePage" href="#hero" class="flex items-center flex-shrink-0">
-          <span class="text-lg md:text-xl font-display font-bold tracking-wide" :class="isScrolled ? 'text-brand-red' : 'text-white'">云声健</span>
+          <img src="@/assets/images/logo.png" alt="云声健" class="h-11 md:h-[3.25rem] w-auto" />
         </a>
         <button v-else @click="$emit('goMain', 'hero')" class="flex items-center flex-shrink-0">
-          <span class="text-lg md:text-xl font-display font-bold tracking-wide" :class="isScrolled ? 'text-brand-red' : 'text-white'">云声健</span>
+          <img src="@/assets/images/logo.png" alt="云声健" class="h-11 md:h-[3.25rem] w-auto" />
         </button>
 
         <!-- Desktop Menu -->
         <div class="hidden lg:flex items-center gap-0.5">
           <template v-for="item in menuItems" :key="item.id">
-            <a v-if="!onMessagePage" :href="item.href"
+            <button v-if="item.isBtn" @click="$emit('goMessage')"
+               class="px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-300"
+               :class="isScrolled ? 'text-brand-gray hover:text-brand-red hover:bg-brand-red/5' : 'text-white/80 hover:text-white hover:bg-white/10'">
+              {{ item.label }}
+            </button>
+            <a v-else-if="!onMessagePage" :href="item.href"
                class="px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-300"
                :class="activeSection === item.id ? 'text-brand-red bg-brand-red/10' : (isScrolled ? 'text-brand-gray hover:text-brand-red hover:bg-brand-red/5' : 'text-white/80 hover:text-white hover:bg-white/10')">
               {{ item.label }}
@@ -24,17 +29,6 @@
             </button>
           </template>
 
-          <!-- 在线留言 — 两种模式都显示，留言页高亮 -->
-          <button v-if="!onMessagePage" @click="$emit('goMessage')"
-                  class="px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-300"
-                  :class="activeSection === 'message' ? 'text-brand-red bg-brand-red/10' : (isScrolled ? 'text-brand-gray hover:text-brand-red hover:bg-brand-red/5' : 'text-white/80 hover:text-white hover:bg-white/10')">
-            在线留言
-          </button>
-          <span v-else
-                  class="px-3 py-1.5 text-sm font-medium rounded-lg"
-                  :class="activeSection === 'message' ? 'text-brand-red bg-brand-red/10' : (isScrolled ? 'text-brand-gray hover:text-brand-red hover:bg-brand-red/5' : 'text-white/80 hover:text-white hover:bg-white/10')">
-            在线留言
-          </span>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -54,7 +48,11 @@
       <div v-if="mobileOpen" class="lg:hidden bg-white shadow-xl border-t">
         <div class="px-4 py-2 space-y-0.5">
           <template v-for="item in menuItems" :key="item.id">
-            <a v-if="!onMessagePage" :href="item.href" @click="mobileOpen = false"
+            <button v-if="item.isBtn" @click="goMessageFromMobile()"
+               class="block w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors text-brand-dark hover:text-brand-red hover:bg-brand-red/5">
+              {{ item.label }}
+            </button>
+            <a v-else-if="!onMessagePage" :href="item.href" @click="mobileOpen = false"
                class="block px-4 py-3 rounded-lg text-sm font-medium transition-colors"
                :class="activeSection === item.id ? 'text-brand-red bg-brand-red/10' : 'text-brand-dark hover:text-brand-red hover:bg-brand-red/5'">
               {{ item.label }}
@@ -65,14 +63,6 @@
             </button>
           </template>
 
-          <button v-if="!onMessagePage" @click="goMessageFromMobile"
-                  class="block w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors text-brand-dark hover:text-brand-red hover:bg-brand-red/5 mt-1">
-            在线留言
-          </button>
-          <span v-else
-                  class="block w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-brand-red bg-brand-red/10 mt-1">
-            在线留言
-          </span>
         </div>
       </div>
     </Transition>
@@ -87,7 +77,7 @@ const props = defineProps({
   onMessagePage: { type: Boolean, default: false },
 })
 
-const emit = defineEmits(['goMessage', 'goMain'])
+const emit = defineEmits(['goMain', 'goMessage'])
 
 const mobileOpen = ref(false)
 const isScrolled = ref(false)
@@ -100,19 +90,20 @@ const menuItems = [
   { id: 'hero', label: '首页', href: '#hero' },
   { id: 'products', label: '产品展示', href: '#products' },
   { id: 'truck', label: '流动车', href: '#truck' },
+  { id: 'scene', label: '经营现场', href: '#scene' },
   { id: 'advantages', label: '加盟优势', href: '#advantages' },
-  { id: 'process', label: '加盟流程', href: '#process' },
   { id: 'contact', label: '联系我们', href: '#contact' },
+  { id: 'message', label: '在线留言', isBtn: true },
 ]
-
-function goMessageFromMobile() {
-  mobileOpen.value = false
-  emit('goMessage')
-}
 
 function goMainFromMobile(id) {
   mobileOpen.value = false
   emit('goMain', id)
+}
+
+function goMessageFromMobile() {
+  mobileOpen.value = false
+  emit('goMessage')
 }
 </script>
 

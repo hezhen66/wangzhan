@@ -4,8 +4,8 @@
     <NavBar
       :activeSection="activeSection"
       :onMessagePage="showMessage"
-      @goMessage="openMessage"
       @goMain="closeMessage"
+      @goMessage="openMessage"
     />
 
     <!-- 单页滚动 — v-show 保活，不销毁 DOM -->
@@ -18,8 +18,16 @@
         <ProductShowcase />
       </section>
 
+      <section id="slogan">
+        <BrandSlogan />
+      </section>
+
       <section id="truck">
         <MobileTruck />
+      </section>
+
+      <section id="scene">
+        <SceneProof />
       </section>
 
       <section id="advantages">
@@ -49,6 +57,8 @@ import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import NavBar from './components/NavBar.vue'
 import HeroBanner from './components/HeroBanner.vue'
 import ProductShowcase from './components/ProductShowcase.vue'
+import SceneProof from './components/SceneProof.vue'
+import BrandSlogan from './components/BrandSlogan.vue'
 import MobileTruck from './components/MobileTruck.vue'
 import FranchiseAdvantages from './components/FranchiseAdvantages.vue'
 import FranchiseProcess from './components/FranchiseProcess.vue'
@@ -58,7 +68,7 @@ import Footer from './components/Footer.vue'
 
 const showMessage = ref(false)
 const activeSection = ref('hero')
-const sections = ['hero', 'products', 'truck', 'advantages', 'process', 'contact']
+const sections = ['hero', 'products', 'truck', 'scene', 'advantages', 'process', 'contact']
 
 let observer = null
 
